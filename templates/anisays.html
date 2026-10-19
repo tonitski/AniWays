@@ -1,0 +1,11 @@
+{% extends 'base.html' %}{% block title %}AniSays{% endblock %}{% block content %}<h1>AniSays ⭐⭐⭐⭐⭐</h1>
+<p class="muted">Sample positive reviews for the AniWays demo website.</p>
+<p class="notice">These are example reviews, not verified customer testimonials. Replace with real customer feedback
+    before launch.</p>
+<div class="reviews">{% for name,review in [('Mika R.','The product is useful and what you get is what you
+    receive.'),('Jun P.','Easy to browse and I found the farm supplies I needed.'),('Lara S.','A good variety of seeds,
+    snacks, and equipment in one place.'),('Romy D.','The ordering steps were simple and easy to understand.')] %}
+    <article class="panel">
+        <div class="stars">★★★★★</div>
+        <p>“{{ review }}”</p><b>{{ name }}</b><small>Sample demo review</small>
+    </article>{% endfor %}</div>{% endblock %}

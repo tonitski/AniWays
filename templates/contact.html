@@ -1,0 +1,16 @@
+{% extends 'base.html' %}{% block title %}Contact AniWays{% endblock %}{% block content %}<h1>Contact AniWays</h1>
+<p class="muted">Have questions about products or an order? Reach out using these sample contact details.</p>
+<div class="two">
+    <div class="panel">
+        <h2>Get in touch</h2>
+        <p>☎️ <b>Phone</b><br>09123456789</p>
+        <p>✉️ <b>Email</b><br>aniways@gmail.com</p>
+        <p>📘 <b>Facebook</b><br> AniWays Official Page</p>
+        <p class="notice">Replace these details with your real business contacts before publishing.</p>
+    </div>
+    <form class="panel" onsubmit="event.preventDefault();alert('Demo form only: messages are not sent yet.')">
+        <h2>Send a message</h2><label class="field">Name<input required></label><label class="field">Email<input
+                type="email" required></label><label class="field">Message<textarea required></textarea></label><button
+            class="button">Send Message</button>
+    </form>
+</div>{% endblock %}

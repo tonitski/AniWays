@@ -1,0 +1,15 @@
+{% extends 'base.html' %}{% block title %}{{ 'Create Account' if mode=='signup' else 'Log In' }} — AniWays{% endblock
+%}{% block content %}<div class="auth panel">
+    <h1>{{ 'Create an AniWays Account' if mode=='signup' else 'Welcome Back' }}</h1>
+    <p class="muted">{{ 'Join the marketplace and track your orders.' if mode=='signup' else 'Log in to view your orders
+        and notifications.' }}</p>
+    <form method="post">{% if mode=='signup' %}<label class="field">Full name<input name="name" required></label>{%
+        endif %}<label class="field">Email<input type="email" name="email" required></label><label
+            class="field">Password (minimum 6 characters)<input type="password" name="password" minlength="6"
+                required></label><button class="button full">{{ 'Create Account' if mode=='signup' else 'Log In'
+            }}</button></form>
+    <p>{% if mode=='signup' %}Already registered? <a href="{{ url_for('login') }}">Log in</a>{% else %}New to AniWays?
+        <a href="{{ url_for('signup') }}">Create an account</a>{% endif %}</p>
+    <p class="notice">Demo only: accounts are stored in the browser session and are not production-secure. Google
+        sign-in is not connected.</p>
+</div>{% endblock %}

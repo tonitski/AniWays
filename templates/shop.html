@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}Shop — AniWays{% endblock %}
+
+{% block content %}
+<h1>Shop AniWays</h1>
+<p class="muted">Browse apparel, seeds, crop supplies, snacks, and equipment.</p>
+
+<div class="shoplayout">
+    <aside class="sidebar">
+        <h3>Categories</h3>
+        {% for c in categories %}
+        <a class="{{ 'active' if selected_category==c and selected_sub=='All' else '' }}"
+           href="{{ url_for('shop', category=c, q=q) }}">{{ c }}</a>
+
+        {# Show the sub-categories (Pants, Boots, Gloves...) under the selected category #}
+        {% if selected_category==c and subcategories %}
+        {% for s in subcategories %}
+        <a class="{{ 'active' if selected_sub==s else '' }}" style="padding-left:24px; font-size:12px;"
+           href="{{ url_for('shop', category=c, type=s, q=q) }}">↳ {{ s }}</a>
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+    </aside>
+
+    <section>
+        <form class="filter" action="{{ url_for('shop') }}">
+            <select name="category" onchange="this.form.submit()">
+                {% for c in categories %}
+                <option {{ 'selected' if selected_category==c else '' }}>{{ c }}</option>
+                {% endfor %}
+            </select>
+            {% if subcategories %}
+            <select name="type" onchange="this.form.submit()">
+                <option value="All">All types</option>
+                {% for s in subcategories %}
+                <option value="{{ s }}" {{ 'selected' if selected_sub==s else '' }}>{{ s }}</option>
+                {% endfor %}
+            </select>
+            {% endif %}
+            <input name="q" value="{{ q }}" placeholder="Search products">
+            <button class="button">Search</button>
+        </form>
+
+        <p class="muted">
+            {{ products|length }} products
+            {% if selected_sub != 'All' %}· {{ selected_sub }}{% elif selected_category != 'All' %}· {{ selected_category }}{% endif %}
+        </p>
+
+        <div class="products">
+            {% for p in products %}
+            <article class="product">
+                <a class="art" href="{{ url_for('product', pid=p.id) }}">
+                    {# Image file: static/images/{{ p.image }} — falls back to the emoji if the file is missing #}
+                    <img src="{{ url_for('static', filename='images/' ~ p.image) }}"
+                         alt="{{ p.name }}"
+                         class="product-image"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <span class="image-fallback" style="display:none;">{{ p.emoji }}</span>
+                </a>
+
+                <div class="pad">
+                    <small>{{ p.subcategory }}</small>
+                    <h3><a href="{{ url_for('product', pid=p.id) }}">{{ p.name }}</a></h3>
+                    <p>{{ p.description }}</p>
+                    <b class="price">₱{{ '%.2f'|format(p.price) }}</b>
+
+                    <div class="actions">
+                        <a class="button light" href="{{ url_for('product', pid=p.id) }}">Details</a>
+
+                        <form action="{{ url_for('add_to_cart') }}" method="post">
+                            <input type="hidden" name="product_id" value="{{ p.id }}">
+                            <button class="button">Add to Ani</button>
+                        </form>
+                    </div>
+                </div>
+            </article>
+            {% else %}
+            <p>No products found. Try another search.</p>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

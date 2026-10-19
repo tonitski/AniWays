@@ -1,0 +1,10 @@
+{% extends 'base.html' %}{% block title %}Notifications{% endblock %}{% block content %}<h1>AniWays Notifications 🔔
+</h1>
+<p class="muted">Order status updates.</p>{% if orders %}<div class="panel">{% for o in orders %}<div class="orderrow">
+        <div><b>{{ o.id }} · {{ o.status }}</b>
+            <p>{{ o.notification }}</p>
+        </div><a href="{{ url_for('order_detail',order_id=o.id) }}">View order →</a>
+    </div>{% endfor %}</div>{% else %}<div class="panel">
+    <h2>You're all caught up</h2>
+    <p class="muted">Order notifications appear here after checkout.</p>
+</div>{% endif %}{% endblock %}

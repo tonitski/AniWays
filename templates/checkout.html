@@ -1,0 +1,37 @@
+{% extends 'base.html' %}{% block title %}AniPay Checkout — AniWays{% endblock %}{% block content %}<h1>AniPay Checkout
+</h1>
+<div class="checkout">
+    <form class="panel" method="post">
+        <h2>Delivery details</h2><label class="field">Full name<input name="name" required
+                value="{{ session.get('user',{}).get('name','') }}"></label><label class="field">Phone number<input
+                name="phone" required placeholder="09XX XXX XXXX"></label><label class="field">Complete address<textarea
+                name="address" required placeholder="House, street, barangay, city, province"></textarea></label>
+        <h2>Payment method</h2>
+        <div class="paygrid">{% for val,label in [('COD','Cash on
+            Delivery'),('PayMaya','PayMaya'),('GCash','GCash'),('MariBank','MariBank'),('Banks','Bank Transfer / Online
+            Banking')] %}<label class="pay"><input type="radio" name="payment" value="{{ val }}" {{ 'checked' if
+                    val=='COD' else '' }}>{{ label }}</label>{% endfor %}</div>
+        <p class="notice">Demo only: payment methods are simulated. No real payment is collected or sent.</p><button
+            class="button">Place Order</button>
+    </form>
+    <aside class="panel">
+        <h2>Order summary</h2>
+        {% for x in items %}
+        <div class="summary-item">
+            <div class="cart-thumb">
+                <img src="{{ url_for('static', filename='images/' ~ x.product.image|default(x.product.id ~ '.jpg')) }}"
+                     alt="{{ x.product.name }}"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class="thumb-fallback" style="display:none;">{{ x.product.emoji }}</span>
+            </div>
+            <div class="info">
+                {{ x.product.name }} × {{ x.qty }}
+                {% if x.options %}<small>{% for k,v in x.options.items() %}{{ v }}{{ ', ' if not loop.last }}{% endfor %}</small>{% endif %}
+            </div>
+            <b>₱{{ '%.2f'|format(x.line) }}</b>
+        </div>
+        {% endfor %}
+        <hr>
+        <h2>Total: ₱{{ '%.2f'|format(total) }}</h2>
+    </aside>
+</div>{% endblock %}

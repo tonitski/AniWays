@@ -1,0 +1,15 @@
+{% extends 'base.html' %}{% block title %}Seller/Admin{% endblock %}{% block content %}<h1>Seller / Admin Order
+    Management</h1>
+<p class="muted">Demo page: manually update order status. No separate admin login is implemented yet.</p>{% if orders %}
+<div class="panel">{% for o in orders %}<div class="adminrow">
+        <div><b>{{ o.id }}</b>
+            <p class="muted">{{ o.name }} · ₱{{ '%.2f'|format(o.total) }}</p>
+        </div><span class="badge">{{ o.status }}</span>
+        <form method="post" action="{{ url_for('update_status') }}"><input type="hidden" name="order_id"
+                value="{{ o.id }}"><select name="status">{% for s in ['Processing','Shipped','Out for
+                Delivery','Delivered'] %}<option {{ 'selected' if s==o.status else '' }}>{{ s }}</option>{% endfor
+                %}</select><button class="button">Update</button></form>
+    </div>{% endfor %}</div>{% else %}<div class="panel">
+    <h2>No demo orders yet</h2>
+    <p>Place an order first, then return here to change its status.</p>
+</div>{% endif %}{% endblock %}

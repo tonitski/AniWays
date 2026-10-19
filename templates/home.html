@@ -1,0 +1,65 @@
+{% extends 'base.html' %}{% block content %}<section class="hero">
+    <div><span>YOUR ONLINE AGRIBUSINESS MARKETPLACE</span>
+        <h1>Harvest More.<br>Worry Less.</h1>
+        <p>Farm wear, vegetable seeds, crop supplies, local snacks, and hardworking tools — find what you need for every
+            season in one place.</p><a class="button" href="{{ url_for('shop') }}">Shop Now →</a> <a
+            class="button light" href="{{ url_for('about') }}">Learn More</a>
+    </div>
+</section>
+<div class="trust">
+    <div>🌱 <b>Farm-ready finds</b><small>Supplies for every season</small></div>
+    <div>🛍️ <b>Many shops, one Ani</b><small>Explore different products</small></div>
+    <div>📦 <b>Delivery tracker</b><small>Follow order status</small></div>
+    <div>🔔 <b>Order notifications</b><small>Updates in your account</small></div>
+</div>
+<div class="heading">
+    <div>
+        <h2>Shop by category</h2>
+        <p>Everything you need to grow, harvest, and get things done.</p>
+    </div>
+</div>
+<div class="categories">{% for c,e in [('Apparel','🥾'),('Seeds','🌱'),('Fertilizer & Crop Care','🧴'),('Farm
+    Snacks','🍌'),('Farm Equipment','🛠️'),('All','🧺')] %}<a href="{{ url_for('shop',category=c) }}"><span>{{ e
+            }}</span><b>{{ c }}</b></a>{% endfor %}</div>
+<div class="heading">
+    <div>
+        <h2>Featured products</h2>
+        <p>Popular picks for your next farm day.</p>
+    </div><a href="{{ url_for('shop') }}">View all →</a>
+</div>
+<div class="products">{% for p in products %}<article class="product">
+<a class="art" href="{{ url_for('product', pid=p.id) }}">
+    {% if p.image %}
+        <img
+            src="{{ url_for('static', filename='images/' + p.image) }}"
+            alt="{{ p.name }}"
+            class="product-image"
+        >
+    {% else %}
+        {{ p.emoji }}
+    {% endif %}
+</a>
+
+        <div class="pad"><small>{{ p.category }}</small>
+            <h3><a href="{{ url_for('product',pid=p.id) }}">{{ p.name }}</a></h3>
+            <p>{{ p.description }}</p><b class="price">₱{{ '%.2f'|format(p.price) }}</b>
+            <div class="actions"><a class="button light" href="{{ url_for('product',pid=p.id) }}">Options</a>
+                <form action="{{ url_for('add_to_cart') }}" method="post"><input type="hidden" name="product_id"
+                        value="{{ p.id }}"><button class="button">Add to Ani</button></form>
+            </div>
+        </div>
+    </article>{% endfor %}</div>
+<section class="story">
+    <div>
+        <h2>Good things grow when we grow together.</h2>
+        <p>AniWays brings farmers, sellers, and consumers together through a convenient online marketplace for
+            agricultural products and everyday farm essentials.</p><a class="button" href="{{ url_for('about') }}">Meet
+            AniWays</a>
+    </div>
+    <div class="storybox">
+        <h2>Create your account</h2>
+        <p>Try the demo checkout, track orders, and see delivery updates. No real payment is processed.</p><a
+            class="button" href="{{ url_for('signup') }}">Create Account</a> <a class="button light"
+            href="{{ url_for('login') }}">Log In</a>
+    </div>
+</section>{% endblock %}

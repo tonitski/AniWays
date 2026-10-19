@@ -1,0 +1,94 @@
+
+{% extends 'base.html' %}
+{% block title %}Your Cart — AniWays{% endblock %}
+
+{% block content %}
+<div class="cart-page">
+    <h1>Your Cart</h1>
+    <p class="muted">Review your chosen products.</p>
+
+    {% if items %}
+    <div class="panel cart-panel">
+        <div class="cart-list">
+            {% for x in items %}
+            <div class="cart-row">
+
+                <a class="cart-thumb"
+                   href="{{ url_for('product', pid=x.product.id) }}">
+                    <img
+                        src="{{ url_for('static', filename='images/' ~ x.product.image|default(x.product.id ~ '.jpg')) }}"
+                        alt="{{ x.product.name }}"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+                    <span class="thumb-fallback" style="display:none;">
+                        {{ x.product.emoji }}
+                    </span>
+                </a>
+
+                <div class="cart-details">
+                    <a class="cart-name"
+                       href="{{ url_for('product', pid=x.product.id) }}">
+                        {{ x.product.name }}
+                    </a>
+
+                    {% if x.options %}
+                    <p class="cart-options">
+                        {% for k, v in x.options.items() %}
+                            {{ k }}: {{ v }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                    {% endif %}
+
+                    <p class="cart-quantity">Qty: {{ x.qty }}</p>
+
+                    <strong class="cart-price">
+                        ₱{{ '%.2f'|format(x.line) }}
+                    </strong>
+                </div>
+
+                <form method="post"
+                      action="{{ url_for('remove_cart') }}">
+                    <input type="hidden"
+                           name="product_id"
+                           value="{{ x.product.id }}">
+
+                    <button class="cart-remove" type="submit">
+                        Remove
+                    </button>
+                </form>
+
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="cart-bottom">
+            <div>
+                <p class="muted">Total Amount</p>
+                <h2>₱{{ '%.2f'|format(total) }}</h2>
+            </div>
+
+            <div class="cart-actions">
+                <a class="button light"
+                   href="{{ url_for('shop') }}">
+                    Continue Shopping
+                </a>
+
+                <a class="button"
+                   href="{{ url_for('checkout') }}">
+                    Checkout
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+    <div class="panel empty-cart">
+        <h2>Your cart is empty 🧺</h2>
+        <p class="muted">You haven't added any products yet.</p>
+        <a class="button" href="{{ url_for('shop') }}">
+            Explore Shop
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

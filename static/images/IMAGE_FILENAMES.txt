@@ -1,0 +1,175 @@
+Put each image in static/images/ using EXACTLY these file names.
+
+# Apparel > Shirts
+plain-long-sleeve-shirt.jpg   (Plain Long-Sleeve Shirt)
+breathable-quick-dry-shirt.jpg   (Breathable Quick-Dry Shirt)
+sun-protection-shirt.jpg   (Sun-Protection Shirt)
+camouflage-long-sleeve-shirt.jpg   (Camouflage Long-Sleeve Shirt)
+farm-themed-graphic-shirt.jpg   (Farm-Themed Graphic Shirt)
+minimalist-long-sleeve-shirt.jpg   (Minimalist Long-Sleeve Shirt)
+reflective-work-shirt.jpg   (Reflective Work Shirt)
+hooded-long-sleeve-shirt.jpg   (Hooded Long-Sleeve Shirt)
+long-sleeve-shirt-with-face-cover.jpg   (Long-Sleeve Shirt with Face Cover)
+lightweight-outdoor-work-shirt.jpg   (Lightweight Outdoor Work Shirt)
+
+# Apparel > Pants
+cargo-work-pants.jpg   (Cargo Work Pants)
+waterproof-pants.jpg   (Waterproof Pants)
+quick-dry-pants.jpg   (Quick-Dry Pants)
+reinforced-work-pants.jpg   (Reinforced Work Pants)
+stretchable-farm-pants.jpg   (Stretchable Farm Pants)
+camouflage-pants.jpg   (Camouflage Pants)
+lightweight-outdoor-trousers.jpg   (Lightweight Outdoor Trousers)
+heavy-duty-utility-pants.jpg   (Heavy-Duty Utility Pants)
+
+# Apparel > Boots & Shoes
+rubber-farm-boots.jpg   (Rubber Farm Boots)
+knee-high-boots.jpg   (Knee-High Boots)
+waterproof-work-boots.jpg   (Waterproof Work Boots)
+safety-boots.jpg   (Safety Boots)
+lightweight-outdoor-shoes.jpg   (Lightweight Outdoor Shoes)
+slip-resistant-boots.jpg   (Slip-Resistant Boots)
+
+# Apparel > Gloves
+rubber-gloves.jpg   (Rubber Gloves)
+gardening-gloves.jpg   (Gardening Gloves)
+cut-resistant-work-gloves.jpg   (Cut-Resistant Work Gloves)
+waterproof-gloves.jpg   (Waterproof Gloves)
+heavy-duty-farm-gloves.jpg   (Heavy-Duty Farm Gloves)
+coated-grip-gloves.jpg   (Coated Grip Gloves)
+
+# Apparel > Caps & Hats
+baseball-cap.jpg   (Baseball Cap)
+wide-brim-sun-hat.jpg   (Wide-Brim Sun Hat)
+bucket-hat.jpg   (Bucket Hat)
+neck-flap-sun-hat.jpg   (Neck-Flap Sun Hat)
+hat-with-face-cover.jpg   (Hat with Face Cover)
+breathable-outdoor-hat.jpg   (Breathable Outdoor Hat)
+waterproof-hat.jpg   (Waterproof Hat)
+
+# Apparel > Rainwear & Jackets
+raincoat.jpg   (Raincoat)
+two-piece-rain-suit.jpg   (Two-Piece Rain Suit)
+waterproof-jacket.jpg   (Waterproof Jacket)
+reflective-raincoat.jpg   (Reflective Raincoat)
+poncho.jpg   (Poncho)
+face-covering-outdoor-jacket.jpg   (Face-Covering Outdoor Jacket)
+
+# Apparel > Protective Wear
+protective-coveralls.jpg   (Protective Coveralls)
+high-visibility-workwear.jpg   (High-Visibility Workwear)
+sun-protection-arm-sleeves.jpg   (Sun-Protection Arm Sleeves)
+
+# Seeds > Vegetable Seeds
+eggplant-seeds.jpg   (Eggplant Seeds)
+ladyfinger-okra-seeds.jpg   (Ladyfinger (Okra) Seeds)
+tomato-seeds.jpg   (Tomato Seeds)
+beans-seeds.jpg   (Beans Seeds)
+chili-seeds.jpg   (Chili Seeds)
+squash-seeds.jpg   (Squash Seeds)
+carrot-seeds.jpg   (Carrot Seeds)
+cabbage-seeds.jpg   (Cabbage Seeds)
+pechay-seeds.jpg   (Pechay Seeds)
+ampalaya-seeds.jpg   (Ampalaya Seeds)
+cucumber-seeds.jpg   (Cucumber Seeds)
+lettuce-seeds.jpg   (Lettuce Seeds)
+onion-seeds.jpg   (Onion Seeds)
+radish-seeds.jpg   (Radish Seeds)
+mustard-greens-seeds.jpg   (Mustard Greens Seeds)
+mixed-vegetable-seeds.jpg   (Mixed Vegetable Seeds)
+
+# Seeds > Grain & Fruit Seeds
+corn-seeds.jpg   (Corn Seeds)
+rice-seeds.jpg   (Rice Seeds)
+watermelon-seeds.jpg   (Watermelon Seeds)
+melon-seeds.jpg   (Melon Seeds)
+
+# Fertilizer & Crop Care > Liquid Fertilizer
+fruit-fertilizer-juice.jpg   (Fruit Fertilizer Juice)
+plant-fertilizer-juice.jpg   (Plant Fertilizer Juice)
+fish-fertilizer-juice.jpg   (Fish Fertilizer Juice)
+organic-liquid-fertilizer.jpg   (Organic Liquid Fertilizer)
+
+# Fertilizer & Crop Care > Chemical Fertilizer
+urea-46-0-0.jpg   (Urea 46-0-0)
+complete-fertilizer-14-14-14.jpg   (Complete Fertilizer 14-14-14)
+ammonium-sulfate.jpg   (Ammonium Sulfate)
+muriate-of-potash.jpg   (Muriate of Potash)
+ammonium-phosphate.jpg   (Ammonium Phosphate)
+rice-specific-fertilizer.jpg   (Rice-Specific Fertilizer)
+
+# Fertilizer & Crop Care > Organic & Soil
+vermicast.jpg   (Vermicast)
+compost-fertilizer.jpg   (Compost Fertilizer)
+soil-conditioner.jpg   (Soil Conditioner)
+
+# Fertilizer & Crop Care > Crop Protection
+virtako-insecticide.jpg   (Virtako Insecticide)
+nativo-fungicide.jpg   (Nativo Fungicide)
+2-4-d-herbicide.jpg   (2,4-D Herbicide)
+frontier-herbicide.jpg   (Frontier Herbicide)
+surekill-molluscicide.jpg   (Surekill Molluscicide)
+
+# Farm Snacks > Chips
+banana-chips.jpg   (Banana Chips)
+taro-chips.jpg   (Taro Chips)
+kangkong-chips.jpg   (Kangkong Chips)
+ampalaya-chips.jpg   (Ampalaya Chips)
+kamote-chips.jpg   (Kamote Chips)
+jackfruit-chips.jpg   (Jackfruit Chips)
+cassava-chips.jpg   (Cassava Chips)
+ube-chips.jpg   (Ube Chips)
+mushroom-chips.jpg   (Mushroom Chips)
+coconut-chips.jpg   (Coconut Chips)
+
+# Farm Snacks > Dried Fruit
+dried-mangoes.jpg   (Dried Mangoes)
+dried-pineapple.jpg   (Dried Pineapple)
+
+# Farm Equipment > Sprayers
+knapsack-sprayer.jpg   (Knapsack Sprayer)
+electric-sprayer.jpg   (Electric Sprayer)
+hand-sprayer.jpg   (Hand Sprayer)
+sprayer-replacement-parts.jpg   (Sprayer Replacement Parts)
+nozzles-and-hoses.jpg   (Nozzles and Hoses)
+
+# Farm Equipment > Hand Tools
+garden-trowel.jpg   (Garden Trowel)
+spade.jpg   (Spade)
+sickle.jpg   (Sickle)
+pitchfork.jpg   (Pitchfork)
+shovel.jpg   (Shovel)
+hoe.jpg   (Hoe)
+gardening-fork.jpg   (Gardening Fork)
+rake.jpg   (Rake)
+bolo.jpg   (Bolo)
+pruning-shears.jpg   (Pruning Shears)
+grass-cutter.jpg   (Grass Cutter)
+wheelbarrow.jpg   (Wheelbarrow)
+
+# Farm Equipment > Water & Irrigation
+watering-can.jpg   (Watering Can)
+garden-hose.jpg   (Garden Hose)
+water-pump.jpg   (Water Pump)
+irrigation-pipes.jpg   (Irrigation Pipes)
+drip-irrigation-kit.jpg   (Drip Irrigation Kit)
+
+# Farm Equipment > Planting & Harvest
+seedling-tray.jpg   (Seedling Tray)
+plant-pots.jpg   (Plant Pots)
+harvesting-basket.jpg   (Harvesting Basket)
+rice-harvesting-tools.jpg   (Rice Harvesting Tools)
+grain-tarpaulin.jpg   (Grain Tarpaulin)
+harvesting-sacks.jpg   (Harvesting Sacks)
+farm-tool-storage-box.jpg   (Farm Tool Storage Box)
+
+# Farm Equipment > Measuring Tools
+measuring-tape.jpg   (Measuring Tape)
+soil-ph-meter.jpg   (Soil pH Meter)
+portable-weighing-scale.jpg   (Portable Weighing Scale)
+
+# Farm Equipment > Safety Gear
+protective-goggles.jpg   (Protective Goggles)
+respirator.jpg   (Respirator)
+safety-helmet.jpg   (Safety Helmet)
+ear-protection.jpg   (Ear Protection)

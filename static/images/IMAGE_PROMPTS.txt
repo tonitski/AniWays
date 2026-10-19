@@ -1,0 +1,120 @@
+AniWays - prompts for the 41 products that still have no photo
+================================================================
+How to use: paste STYLE + the product line into the same AI image tool you used before
+(square 1:1). Save each result as the file name shown, put it in static/images/.
+Or send me the pictures and I will name them for you.
+
+STYLE (add to every prompt):
+"Professional e-commerce product photo, square 1:1, centered, soft natural shadow,
+plain white to light-grey seamless studio background, sharp focus, realistic,
+no people, no watermark, no extra text."
+
+---------------------------------------------------------------- SEEDS
+rice-seeds.jpg
+  Kraft paper seed packet, vintage botanical illustration of a rice plant with golden
+  grains, title "RICE SEEDS", small brand "BUKID SEEDS", a few rice grains scattered
+  in front of the packet.
+corn-seeds.jpg
+  Kraft paper seed packet, vintage botanical illustration of corn cobs and a corn
+  plant, title "CORN SEEDS", small brand "BUKID SEEDS", yellow corn kernels scattered
+  in front.
+mixed-vegetable-seeds.jpg
+  Kraft paper seed packet, vintage botanical illustration of assorted vegetables
+  (tomato, carrot, eggplant, chili), title "MIXED VEGETABLE SEEDS", small brand
+  "BUKID SEEDS", a mix of small seeds scattered in front.
+
+---------------------------------------------------------------- FERTILIZER
+rice-specific-fertilizer.jpg
+  White woven 50 kg fertilizer sack with a green label, rice stalk illustration, title
+  "RICE FERTILIZER", "NET WT 50 KG", same style as a plain farm supply bag.
+
+---------------------------------------------------------------- SHIRTS (flat lay, front view)
+breathable-quick-dry-shirt.jpg
+  Light blue long-sleeve quick-dry work shirt with mesh ventilation panels.
+sun-protection-shirt.jpg
+  Beige long-sleeve UPF 50+ sun-protection shirt with a mandarin collar and thumb loops.
+camouflage-long-sleeve-shirt.jpg
+  Olive and brown camouflage-pattern long-sleeve work shirt.
+farm-themed-graphic-shirt.jpg
+  Cream long-sleeve T-shirt with a farm graphic on the chest (rooster and corn field),
+  rural Philippines style print.
+reflective-work-shirt.jpg
+  Orange long-sleeve work shirt with silver reflective stripes on chest and sleeves.
+long-sleeve-shirt-with-face-cover.jpg
+  Grey-green long-sleeve shirt with an attached neck gaiter face cover pulled up.
+
+---------------------------------------------------------------- PANTS (flat lay)
+stretchable-farm-pants.jpg
+  Dark olive stretch work pants, straight cut, slim zip pocket on one leg.
+camouflage-pants.jpg
+  Olive and brown camouflage cargo pants.
+lightweight-outdoor-trousers.jpg
+  Light grey lightweight outdoor trousers with zip pockets.
+heavy-duty-utility-pants.jpg
+  Dark brown heavy canvas utility work pants with reinforced knees and tool pockets.
+
+---------------------------------------------------------------- BOOTS
+waterproof-work-boots.jpg
+  Pair of tan waterproof leather work boots with lug sole, lace-up.
+slip-resistant-boots.jpg
+  Pair of black work boots, one tilted to show a deep slip-resistant tread sole.
+
+---------------------------------------------------------------- GLOVES
+gardening-gloves.jpg
+  Pair of green fabric gardening gloves with dotted grip palms.
+cut-resistant-work-gloves.jpg
+  Pair of grey cut-resistant work gloves with black nitrile-coated palms.
+waterproof-gloves.jpg
+  Pair of blue waterproof PVC-coated work gloves with long cuffs.
+
+---------------------------------------------------------------- CAPS & HATS
+baseball-cap.jpg
+  Plain green baseball cap, front three-quarter view, curved brim.
+breathable-outdoor-hat.jpg
+  Light beige wide-brim outdoor hat with mesh side panels and chin cord.
+waterproof-hat.jpg
+  Yellow waterproof rain hat with a short brim and chin strap.
+
+---------------------------------------------------------------- RAINWEAR & JACKETS
+two-piece-rain-suit.jpg
+  Green waterproof rain jacket and matching rain pants laid out together.
+waterproof-jacket.jpg
+  Navy waterproof hooded jacket with taped seams, zipped front.
+reflective-raincoat.jpg
+  Yellow raincoat with silver reflective stripes, hood, snap buttons.
+poncho.jpg
+  Olive green waterproof rain poncho with hood, laid flat.
+
+---------------------------------------------------------------- PROTECTIVE WEAR
+protective-coveralls.jpg
+  White hooded protective coverall suit with zipper front, elastic cuffs.
+high-visibility-workwear.jpg
+  Orange high-visibility safety vest with silver reflective bands.
+
+---------------------------------------------------------------- FARM EQUIPMENT
+electric-sprayer.jpg
+  Battery-powered knapsack sprayer, blue and yellow, with wand and hose.
+sprayer-replacement-parts.jpg
+  Neat arrangement of sprayer spare parts: nozzles, rubber seals, filters, hose connectors.
+nozzles-and-hoses.jpg
+  Brass spray nozzles beside a coiled black spray hose.
+pitchfork.jpg
+  Steel pitchfork with four tines and a long wooden handle.
+watering-can.jpg
+  Green metal watering can with a long spout and sprinkler rose.
+water-pump.jpg
+  Small red petrol-engine water pump with intake and outlet hoses.
+irrigation-pipes.jpg
+  Stack of blue PVC irrigation pipes with elbow and T connectors.
+drip-irrigation-kit.jpg
+  Coil of black drip irrigation tubing with emitters, connectors, and a small filter.
+rice-harvesting-tools.jpg
+  Serrated rice harvesting sickle with a wooden handle next to a woven harvesting basket.
+harvesting-sacks.jpg
+  Stack of white woven polypropylene harvesting sacks, one filled with rice grain.
+farm-tool-storage-box.jpg
+  Large green heavy-duty plastic storage box with latched lid, slightly open showing tools.
+respirator.jpg
+  Grey half-face respirator mask with two round filter cartridges.
+ear-protection.jpg
+  Red and black safety ear muffs (hearing protection).

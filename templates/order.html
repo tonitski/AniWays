@@ -1,0 +1,40 @@
+{% extends 'base.html' %}{% block title %}Order {{ order.id }}{% endblock %}{% block content %}<h1>Order {{ order.id }}
+</h1>
+<p class="muted">Placed {{ order.created }}</p>
+<div class="checkout">
+    <section class="panel">
+        <h2>Delivery progress</h2>{% for s in ['Processing','Shipped','Out for Delivery','Delivered'] %}<div
+            class="timeline"><span class="dot">{{ '✓' if s in order.timeline else '·' }}</span>
+            <div><b>{{ s }}</b>
+                <p class="muted">{% if s=='Processing' %}Your order is being prepared.{% elif s=='Shipped' %}Your parcel
+                    has left the seller.{% elif s=='Out for Delivery' %}Your parcel is on the way.{% else %}Your order
+                    has been marked delivered.{% endif %}</p>
+            </div>
+        </div>{% endfor %}<p class="notice">Notification: {{ order.notification }}</p>
+        <h3>Delivery address</h3>
+        <p>{{ order.name }}<br>{{ order.phone }}<br>{{ order.address }}</p>
+    </section>
+    <aside class="panel receipt">
+        <h2>ANIWAYS · PARCEL RECEIPT</h2><b>{{ order.id }}</b>
+        <hr>
+        {% for x in order['items'] %}
+        <div class="summary-item">
+            <div class="cart-thumb">
+                <img src="{{ url_for('static', filename='images/' ~ x.product.image|default(x.product.id ~ '.jpg')) }}"
+                     alt="{{ x.product.name }}"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class="thumb-fallback" style="display:none;">{{ x.product.emoji }}</span>
+            </div>
+            <div class="info">
+                {{ x.product.name }} × {{ x.qty }}
+                {% if x.options %}<small>{% for k,v in x.options.items() %}{{ v }}{{ ', ' if not loop.last }}{% endfor %}</small>{% endif %}
+            </div>
+            <b>₱{{ '%.2f'|format(x.line) }}</b>
+        </div>
+        {% endfor %}
+        <hr>
+        <h2>Total ₱{{ '%.2f'|format(order.total) }}</h2>
+        <p>Payment: {{ order.payment }}<br>Status: Simulated / unpaid</p><button class="button light"
+            onclick="window.print()">Print Receipt</button>
+    </aside>
+</div>{% endblock %}

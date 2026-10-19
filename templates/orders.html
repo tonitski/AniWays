@@ -1,0 +1,10 @@
+{% extends 'base.html' %}{% block title %}Delivery Tracker{% endblock %}{% block content %}<h1>Delivery Tracker</h1>
+<p class="muted">Track orders from processing to delivery.</p>{% if orders %}<div class="panel">{% for o in orders %}
+    <div class="orderrow">
+        <div><b>{{ o.id }}</b>
+            <p class="muted">{{ o.created }} · {{ o.payment }}</p>
+        </div><span class="badge">{{ o.status }}</span><a class="button light"
+            href="{{ url_for('order_detail',order_id=o.id) }}">Track</a>
+    </div>{% endfor %}</div>{% else %}<div class="panel">
+    <h2>No orders yet 📦</h2><a class="button" href="{{ url_for('shop') }}">Shop now</a>
+</div>{% endif %}{% endblock %}

@@ -1,0 +1,73 @@
+
+{% extends 'base.html' %}
+{% block title %}{{ p.name }} — AniWays{% endblock %}
+
+{% block content %}
+<p class="muted">
+    <a href="{{ url_for('shop') }}">Shop</a> / {{ p.category }}
+</p>
+
+<div class="detail">
+    <div class="art bigart product-detail-art">
+
+        <img
+            src="{{ url_for('static', filename='images/' ~ p.image) }}"
+            alt="{{ p.name }}"
+            class="product-detail-image"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        >
+
+        <span class="image-fallback" style="display:none;">
+            {{ p.emoji }}
+        </span>
+    </div>
+
+    <div>
+        <small>{{ p.category }}</small>
+
+        <h1>{{ p.name }}</h1>
+
+        <h2 class="price">
+            ₱{{ '%.2f'|format(p.price) }}
+        </h2>
+
+        <p>{{ p.description }}</p>
+
+        <form action="{{ url_for('add_to_cart') }}" method="post">
+            <input type="hidden" name="product_id" value="{{ p.id }}">
+
+            {% for key, values in p.options.items() %}
+            <label class="field">
+                {{ key }}
+
+                <select name="option_{{ key }}">
+                    {% for v in values %}
+                    <option>{{ v }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            {% endfor %}
+
+            <label class="field">
+                Quantity
+                <input type="number" name="qty" value="1" min="1">
+            </label>
+
+            <button class="button" type="submit">
+                Add to Ani
+            </button>
+
+            <a class="button light" href="{{ url_for('cart') }}">
+                View Your Ani
+            </a>
+        </form>
+
+        {% if p.category == 'Fertilizer & Crop Care' %}
+        <p class="notice">
+            Always verify product registration and follow the official label
+            and safety instructions.
+        </p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
