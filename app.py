@@ -1,10 +1,15 @@
+
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from functools import wraps
 from datetime import datetime
 import uuid, re, os
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY")
+
+# Use a secret key from the environment.
+# The fallback is only for local development.
+app.secret_key = os.environ.get("SECRET_KEY") or "local-development-only-change-me"
+
 
 PRODUCTS = []
 SUBCATEGORIES = {}   # category -> [subcategory, ...] in display order
