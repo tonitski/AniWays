@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from functools import wraps
 from datetime import datetime
-import uuid, re
+import uuid, re, os
 
 app = Flask(__name__)
-app.secret_key = 'change-this-secret-before-deployment'
+app.secret_key = os.environ.get("SECRET_KEY")
 
 PRODUCTS = []
 SUBCATEGORIES = {}   # category -> [subcategory, ...] in display order
