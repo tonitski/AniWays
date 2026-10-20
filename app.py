@@ -2,7 +2,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from functools import wraps
 from datetime import datetime
-import uuid, re, os
+import uuid, re, os, sqlite3
 
 app = Flask(__name__)
 
@@ -13,6 +13,39 @@ app.secret_key = os.environ.get("SECRET_KEY") or "local-development-only-change-
 
 PRODUCTS = []
 SUBCATEGORIES = {}   # category -> [subcategory, ...] in display order
+
+# ---------------- CUSTOMER FEEDBACK DATABASE ----------------
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FEEDBACK_DB = os.path.join(BASE_DIR, "feedback.db")
+
+
+def get_feedback_db():
+    conn = sqlite3.connect(FEEDBACK_DB)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+
+def init_feedback_db():
+    conn = get_feedback_db()
+
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS feedback (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            order_id TEXT NOT NULL UNIQUE,
+            customer_name TEXT NOT NULL,
+            customer_email TEXT NOT NULL,
+            rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 5),
+            review TEXT NOT NULL,
+            created_at TEXT NOT NULL
+        )
+    """)
+
+    conn.commit()
+    conn.close()
+
+
+init_feedback_db()
 
 
 def slug(s):
@@ -224,12 +257,36 @@ def checkout():
 def orders(): return render_template('orders.html', orders=session.get('orders', []))
 
 
+
 @app.route('/order/<order_id>')
 @login_required
 def order_detail(order_id):
-    o = next((x for x in session.get('orders', []) if x['id'] == order_id), None)
-    if not o: return 'Order not found in this browser session.', 404
-    return render_template('order.html', order=o)
+    order = next(
+        (
+            item for item in session.get('orders', [])
+            if item.get('id') == order_id
+        ),
+        None
+    )
+
+    if not order:
+        return 'Order not found in this browser session.', 404
+
+    conn = get_feedback_db()
+
+    feedback = conn.execute(
+        'SELECT * FROM feedback WHERE order_id = ?',
+        (order_id,)
+    ).fetchone()
+
+    conn.close()
+
+    return render_template(
+        'order.html',
+        order=order,
+        feedback=feedback
+    )
+
 
 
 @app.route('/notifications')
@@ -289,6 +346,114 @@ def update_status():
         order['notification'] = f'Order {oid} status updated to {status}.'; session['orders'] = orders; flash('Order status updated.', 'success')
     else: flash('Order not found in this session.', 'warning')
     return redirect(url_for('admin'))
+    
+# ---------------- CUSTOMER FEEDBACK ----------------
+
+@app.route('/feedback/<order_id>', methods=['GET', 'POST'])
+@login_required
+def submit_feedback(order_id):
+    order = next(
+        (
+            item for item in session.get('orders', [])
+            if item.get('id') == order_id
+        ),
+        None
+    )
+
+    if not order:
+        flash('Order not found in your session.', 'warning')
+        return redirect(url_for('orders'))
+
+    if order.get('status') != 'Delivered':
+        flash('You can review an order only after it is delivered.', 'warning')
+        return redirect(url_for('order_detail', order_id=order_id))
+
+    conn = get_feedback_db()
+
+    existing = conn.execute(
+        'SELECT id FROM feedback WHERE order_id = ?',
+        (order_id,)
+    ).fetchone()
+
+    conn.close()
+
+    if existing:
+        flash('Feedback has already been submitted for this order.', 'info')
+        return redirect(url_for('order_detail', order_id=order_id))
+
+    if request.method == 'POST':
+        try:
+            rating = int(request.form.get('rating', '0'))
+        except (ValueError, TypeError):
+            rating = 0
+
+        review = request.form.get('review', '').strip()
+
+        if rating not in range(1, 6):
+            flash('Please select a rating from 1 to 5 stars.', 'danger')
+            return render_template('feedback.html', order=order)
+
+        if not review:
+            flash('Please write a review before submitting.', 'danger')
+            return render_template('feedback.html', order=order)
+
+        if len(review) > 2000:
+            flash('Your review must be 2,000 characters or fewer.', 'danger')
+            return render_template('feedback.html', order=order)
+
+        user = session.get('user', {})
+        customer_name = user.get('name', order.get('name', 'Customer'))
+        customer_email = user.get('email', '')
+
+        conn = get_feedback_db()
+
+        try:
+            conn.execute("""
+                INSERT INTO feedback (
+                    order_id, customer_name, customer_email,
+                    rating, review, created_at
+                )
+                VALUES (?, ?, ?, ?, ?, ?)
+            """, (
+                order_id,
+                customer_name,
+                customer_email,
+                rating,
+                review,
+                datetime.now().strftime('%b %d, %Y %I:%M %p')
+            ))
+
+            conn.commit()
+            flash('Thank you! Your feedback has been submitted.', 'success')
+
+        except sqlite3.IntegrityError:
+            flash('Feedback has already been submitted for this order.', 'info')
+
+        finally:
+            conn.close()
+
+        return redirect(url_for('order_detail', order_id=order_id))
+
+    return render_template('feedback.html', order=order)
+
+
+@app.route('/admin/feedback')
+def admin_feedback():
+    conn = get_feedback_db()
+
+    reviews = conn.execute("""
+        SELECT *
+        FROM feedback
+        ORDER BY id DESC
+    """).fetchall()
+
+    conn.close()
+
+    return render_template(
+        'admin_feedback.html',
+        reviews=reviews
+    )
+
 
 
 if __name__ == '__main__': app.run(debug=True)

@@ -1,0 +1,43 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Rate Your Order — AniWays{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <p class="muted">Order {{ order.id }} · Delivered</p>
+    <h1>Rate Your AniWays Order</h1>
+    <p>We'd love to hear about your product and delivery experience.</p>
+
+    <form method="POST"
+          action="{{ url_for('submit_feedback', order_id=order.id) }}">
+
+        <label class="field" for="rating">Your Rating</label>
+        <select name="rating" id="rating" required>
+            <option value="">Choose a rating</option>
+            <option value="5">★★★★★ — Excellent</option>
+            <option value="4">★★★★ — Very Good</option>
+            <option value="3">★★★ — Good</option>
+            <option value="2">★★ — Fair</option>
+            <option value="1">★ — Poor</option>
+        </select>
+
+        <label class="field" for="review">Your Review</label>
+        <textarea
+            id="review"
+            name="review"
+            rows="5"
+            maxlength="2000"
+            placeholder="Write your feedback here..."
+            required
+        ></textarea>
+
+        <button class="button" type="submit">Submit Feedback</button>
+
+        <a class="button light"
+           href="{{ url_for('order_detail', order_id=order.id) }}">
+            Cancel
+        </a>
+    </form>
+</section>
+{% endblock %}

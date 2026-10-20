@@ -1,0 +1,46 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Customer Feedback — AniWays{% endblock %}
+
+{% block content %}
+<h1>Customer Feedback</h1>
+<p class="muted">Customer ratings and reviews for delivered orders.</p>
+
+<p>
+    <a class="button light" href="{{ url_for('admin') }}">
+        Back to Order Management
+    </a>
+</p>
+
+{% if reviews %}
+    {% for review in reviews %}
+    <article class="panel" style="margin-bottom: 16px;">
+        <h3>{{ review['customer_name'] }}</h3>
+
+        <p>
+            <strong>Order ID:</strong> {{ review['order_id'] }}
+        </p>
+
+        <p>
+            <strong>Rating:</strong>
+            <span style="color: #eab308;">
+                {% for star in range(review['rating']) %}★{% endfor %}{% for star in range(5 - review['rating']) %}☆{% endfor %}
+            </span>
+            ({{ review['rating'] }}/5)
+        </p>
+
+        <p>{{ review['review'] }}</p>
+
+        <small class="muted">
+            {{ review['created_at'] }}
+        </small>
+    </article>
+    {% endfor %}
+{% else %}
+<div class="panel">
+    <h2>No feedback yet</h2>
+    <p>Customer reviews will appear here after submission.</p>
+</div>
+{% endif %}
+{% endblock %}
